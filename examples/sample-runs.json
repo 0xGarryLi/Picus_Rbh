@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "demo": true,
+  "workflow": "quarterly-equity-research",
+  "task": "Summarize a public-company report",
+  "quality_gate": 0.9,
+  "candidates": [
+    {
+      "id": "A",
+      "name": "Baseline",
+      "total_cost_usd": 0.84,
+      "latency_ms": 8800,
+      "quality_score": 0.94,
+      "events": [
+        {
+          "step": "retrieve",
+          "cost_usd": 0.06
+        },
+        {
+          "step": "reason",
+          "cost_usd": 0.72
+        },
+        {
+          "step": "format",
+          "cost_usd": 0.06
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Optimized candidate",
+      "total_cost_usd": 0.39,
+      "latency_ms": 6400,
+      "quality_score": 0.92,
+      "events": [
+        {
+          "step": "retrieve",
+          "cost_usd": 0.06
+        },
+        {
+          "step": "reason",
+          "cost_usd": 0.27
+        },
+        {
+          "step": "format",
+          "cost_usd": 0.06
+        }
+      ]
+    }
+  ],
+  "disclaimer": "SYNTHETIC EXAMPLE. No real execution or performance claims."
+}
