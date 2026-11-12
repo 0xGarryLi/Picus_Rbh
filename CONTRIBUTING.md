@@ -1,13 +1,17 @@
 # Contributing to PICUS
 
-Thanks for exploring PICUS. This repository currently documents a research-stage prototype.
+PICUS is developing Shadow Run for AI-powered financial execution routing.
 
 ## Getting started
 
 1. Open an issue proposing a specific change.
-2. Keep experimental claims clearly labeled as simulated or measured.
-3. Avoid adding real wallet keys, credentials, private traces or proprietary data.
-4. For website contributions, test desktop and mobile layouts and reduced-motion behavior.
-5. For comparison work, include a reproducible input JSON, baseline, and quality threshold.
+2. Keep synthetic and measured results clearly separated.
+3. Never commit wallet keys, credentials, proprietary quotes or private user data.
+4. For route-comparison work, include quote provenance, timestamp, cost components and rejection rules.
+5. For website changes, test desktop, mobile and reduced-motion behavior.
 
-No mainnet contracts or governance procedures are currently defined. Pull requests should not introduce a token address without verification by the project maintainer.
+Official $PICUS contract:
+
+`0x81f3ad4882233fcaff4e4dfbe570ac1c96f2b7b3`
+
+Do not replace or duplicate this address without maintainer verification.

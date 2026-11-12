@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.2",
+  "demo": true,
+  "intent": {
+    "action": "swap",
+    "asset_in": "USDC",
+    "asset_out": "ETH",
+    "amount_in": 1000
+  },
+  "routes": [
+    {
+      "id": "route-a",
+      "name": "Venue A",
+      "expected_output_usd": 991.20,
+      "explicit_fee_usd": 2.50,
+      "gas_usd": 1.10,
+      "slippage_cost_usd": 5.20,
+      "simulation": "pass",
+      "quote_age_ms": 420
+    },
+    {
+      "id": "route-b",
+      "name": "Venue B",
+      "expected_output_usd": 994.10,
+      "explicit_fee_usd": 1.90,
+      "gas_usd": 0.95,
+      "slippage_cost_usd": 3.05,
+      "simulation": "pass",
+      "quote_age_ms": 510
+    },
+    {
+      "id": "route-c",
+      "name": "Venue C",
+      "expected_output_usd": 995.00,
+      "explicit_fee_usd": 1.20,
+      "gas_usd": 0.80,
+      "slippage_cost_usd": 3.00,
+      "simulation": "fail",
+      "quote_age_ms": 390
+    }
+  ],
+  "disclaimer": "SYNTHETIC EXAMPLE. No live quote, transaction or savings claim."
+}

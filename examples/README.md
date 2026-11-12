@@ -1,5 +1,9 @@
-# Offline examples
+# Offline Shadow Run example
 
-Run `python3 examples/compare_runs.py examples/sample-runs.json` from repository root.
+Run from repository root:
 
-The script selects the lowest-cost candidate **that passes the quality gate**. It reads a fixed JSON file and makes no external requests. Values are synthetic and do not demonstrate real-world performance, guarantees, or token utility.
+```bash
+python3 examples/compare_routes.py examples/sample-routes.json
+```
+
+The demo normalizes synthetic route costs, rejects a simulated failed route, and chooses the lowest all-in cost among eligible routes. It makes no network, wallet or exchange calls and does not demonstrate real savings.

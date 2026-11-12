@@ -1,0 +1,9 @@
+{
+  "project": "PICUS",
+  "ticker": "$PICUS",
+  "x": "https://x.com/picus_rbh",
+  "github": "https://github.com/0xGarryLi/Picus_Rbh",
+  "contract": "0x81f3ad4882233fcaff4e4dfbe570ac1c96f2b7b3",
+  "product": "AI-powered financial execution routing",
+  "core_mechanism": "Shadow Run"
+}

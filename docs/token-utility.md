@@ -1,32 +1,39 @@
-# $PICUS — proposed holding utility
+# $PICUS — token utility
 
-**No contract deployed. No token mechanics or discount program are active.**
+## Official contract
 
-## Design goal
+```text
+0x81f3ad4882233fcaff4e4dfbe570ac1c96f2b7b3
+```
 
-Wallet holders could become eligible for preferential **resource prices** for selected PICUS Shadow Run evaluation / optimization services. Users would not need to spend tokens on each request.
+Verify the address through official PICUS channels before interacting with the token.
 
-### What changes
+## Utility direction
 
-The eligible price for a selected paid resource, if the network has sustainable discount funding.
+PICUS is designed around a simple holding utility: **hold $PICUS to become eligible for lower prices on selected PICUS services**.
 
-### What does not change
+The intended benefit applies to PICUS-controlled service pricing, such as eligible routing, simulation, quote aggregation or optimization resources. It does not change the underlying blockchain gas fee, venue fee, liquidity-provider economics, or an unrelated third-party charge.
 
-- Network gas fees
-- Publicly defined fixed PICUS protocol fees
-- Third-party prices outside participating PICUS offers
+### What can become cheaper
 
-## Unresolved decisions
+- eligible Shadow Run simulations
+- selected routing / quote aggregation resources
+- selected PICUS-operated optimization services
+- future partner offers explicitly marked as $PICUS-holder benefits
 
-- Eligibility: snapshots, average held balance, delegated balances and resistance to balance hopping
-- Resource pricing: vendor cost, operator margin, discount cap and settlement currency
-- Contract: network, address, supply, distribution and security audit
-- Discount funding: supplier rebates or actual unit-cost savings, **not perpetual emissions**
+### What does not become cheaper automatically
 
-## Commercial reality
+- network gas
+- DEX / venue fees
+- third-party API prices outside participating offers
+- slippage created by market liquidity
 
-Token holding is not a prerequisite for running a comparison prototype. A holder discount alone does not establish unique economic necessity for a token. Features and rate schedules require testing and partner agreements. Token prices can fluctuate and savings may not compensate for holding risk.
+## Holder eligibility
 
-## Safety and messaging
+Exact tiers and discount levels should only be published after unit economics and abuse resistance are tested. Possible eligibility mechanisms include time-weighted balances or minimum holding periods rather than one-block snapshots.
 
-Do not imply investment returns, equity ownership, guaranteed savings, officially authorized Robinhood integration or audited contracts.
+## Important distinction
+
+The token contract is published. The full holder-discount program and live financial routing backend are separate product components and should not be represented as active until implemented and announced.
+
+PICUS does not promise investment returns, token appreciation, equity ownership or guaranteed execution savings.

@@ -1,35 +1,58 @@
-# Proposed technical architecture
+# PICUS financial routing architecture
 
-**Status:** design document, not a production deployment.
+**Status:** product architecture / prototype specification. Live routing integrations are not included in this repository.
 
 ```text
-Agent workflow → Trace collector → Candidate generator → Shadow sandbox
-                  │                                      │
-                  └────────→ Comparison evaluator ←──────┘
-                                      │
-                              Recommendation / report
+Agent intent
+    │
+    ▼
+Intent normalizer
+    │
+    ▼
+Route discovery ──► Quote adapters / venues / data providers
+    │
+    ▼
+Shadow Run simulator
+    │
+    ▼
+All-in cost evaluator
+    │
+    ├─ expected output
+    ├─ explicit fees
+    ├─ gas / settlement cost
+    ├─ slippage / price impact
+    ├─ liquidity constraints
+    ├─ latency / quote expiry
+    └─ route validity
+    │
+    ▼
+Recommendation or NO ROUTE
 ```
 
 ## Components
 
-**Trace collector:** normalizes a workflow into immutable events containing node IDs, model and tool identifiers, declared prices, durations, redacted request metadata, version numbers and error codes. Sensitive prompts, API keys and private responses must not be logged by default.
+**Intent normalizer** converts an agent request into a machine-readable action with asset, amount, destination, timing, permissions and maximum-cost constraints.
 
-**Candidate generator:** proposes alternative task plans or substitutions under explicit allow-lists. It must not silently alter user goals or agent permissions.
+**Route discovery** queries supported venues or providers and normalizes heterogeneous quotes into a comparable schema. A quote must carry provenance, timestamp and expiry metadata.
 
-**Shadow sandbox:** performs isolated tests against mocks, snapshots or disposable environments. Real purchases, brokerage orders and wallet transactions must be disabled. A dry run cannot prove equivalence to a live external service.
+**Shadow Run simulator** evaluates candidate routes without broadcasting the user's real transaction. Depending on the integration, this can include call simulation, allowance checks, balance checks, revert detection and expected-output estimation.
 
-**Evaluator:** reports total resource cost, end-to-end latency, task-specific quality rubric scores, failure rates and evidence completeness. Compare identical input snapshots and report confidence intervals over repeated trials.
+**All-in cost evaluator** compares routes using the user's objective. A superficially lower fee is not necessarily cheaper after gas, spread, slippage and price impact.
 
-**Recommendation:** selects the cheaper path **only if** it meets user-defined quality thresholds, resource constraints and safety policies.
+**Recommendation layer** returns the best eligible route only when it satisfies all hard constraints. If evidence is stale or simulation fails, PICUS should return no recommendation rather than fabricate certainty.
 
-## Important limitations
+## Trust boundaries
 
-- LLM outputs are nondeterministic. Two runs may require repeated evaluation to establish comparable quality.
-- Tool outputs can drift between runs; snapshot or version inputs for fair comparisons.
-- Side effects must be blocked during shadow execution.
-- Costs need explicit rate cards and effective dates; a simulated cost estimate is not a vendor quote.
-- Production deployment requires security review, privacy design and structured observability.
+- Private keys never belong in PICUS routing code.
+- Quotes require timestamps and source identity.
+- Simulations are estimates, not guarantees of final execution price.
+- External liquidity can change between simulation and execution.
+- Live execution should require explicit permissions defined by the wallet / agent owner.
 
-## Potential onchain role
+## Onchain role
 
-Robinhood Chain is a proposed deployment environment for token-related interactions. Evaluation and LLM execution stay offchain. No blockchain transaction is required for the offline prototype.
+The published $PICUS contract is:
+
+`0x81f3ad4882233fcaff4e4dfbe570ac1c96f2b7b3`
+
+PICUS service eligibility may use onchain balance verification. Quote collection, route analysis and simulation remain primarily offchain for latency and cost reasons.

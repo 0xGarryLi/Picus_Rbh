@@ -2,16 +2,22 @@
 
 ## Status
 
-This is a public-facing concept website and simulated trace tooling. **Not production-grade trading, wallet or agent-execution infrastructure.**
+This repository includes a public website, documentation and synthetic route-comparison examples. It is **not production-grade trading or custody infrastructure**.
+
+## Official contract
+
+`0x81f3ad4882233fcaff4e4dfbe570ac1c96f2b7b3`
+
+Verify the address through official PICUS channels. Never paste seed phrases or private keys into an issue, website form or support message.
 
 ## Reporting
 
-Please contact the project through [@picus_rbh](https://x.com/picus_rbh) and request a private disclosure channel; do not publish live exploits, private keys or secrets in issues.
+Contact the project through [@picus_rbh](https://x.com/picus_rbh) and request a private disclosure channel. Do not publish active exploits, private keys or credentials in public issues.
 
 ## Wallet safety
 
-Website wallet connection only requests accounts through an injected provider. Users should not approve transactions, token spending or signatures to test this repository. No official contract has been published.
+The static website's wallet connection requests account access only. Testing the website does not require approving token spending, signing arbitrary messages or executing swaps.
 
-## Boundaries
+## Routing boundaries
 
-Shadow executions must not place live orders, transfer value, expose credentials, or cause irreversible external effects. Use sandbox mocks only.
+Shadow simulations must not silently broadcast live transactions. Production execution should enforce explicit user / agent permissions, quote freshness checks, chain and contract allow-lists, slippage limits and simulation validation.
